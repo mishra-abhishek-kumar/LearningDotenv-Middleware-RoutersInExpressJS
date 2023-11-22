@@ -3,13 +3,14 @@ const express = require('express');
 const dotenv = require('dotenv');
 dotenv.config({path: './.env'});
 
-//importing post router
-const postRouter = require('./routes/post');
+//importing main Router
+const mainRouter = require('./routes/index');
 
 const app = express();
 
-//Using postRouter to access the endpoint /post/
-app.use('/post', postRouter);
+//Using mainRouter to access every other endpoints
+//This will help to not cluster our this main index file, we are seperating our endpoints in deiffernet area
+app.use('/api', mainRouter);
 
 
 app.get('/', (req, res) => {
