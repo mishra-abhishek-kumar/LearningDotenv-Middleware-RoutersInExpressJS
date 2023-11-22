@@ -8,6 +8,12 @@ const mainRouter = require('./routes/index');
 
 const app = express();
 
+//Global Middleware: It will run before anyother API
+app.use((req, res, next) => {
+    console.log(req.method, req.url, new Date().toTimeString());
+    next();
+})
+
 //Using mainRouter to access every other endpoints
 //This will help to not cluster our this main index file, we are seperating our endpoints in deiffernet area
 app.use('/', mainRouter);
