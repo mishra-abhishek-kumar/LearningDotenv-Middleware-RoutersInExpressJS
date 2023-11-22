@@ -1,11 +1,16 @@
 const express = require('express');
-
-
 //configuring dotenv file: helps take all variables from file to be available at process level
 const dotenv = require('dotenv');
 dotenv.config({path: './.env'});
 
+//importing post router
+const postRouter = require('./routes/post');
+
 const app = express();
+
+//Using postRouter to access the endpoint /post/
+app.use('/post', postRouter);
+
 
 app.get('/', (req, res) => {
     res.send({
