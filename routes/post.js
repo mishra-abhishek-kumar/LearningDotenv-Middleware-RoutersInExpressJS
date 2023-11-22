@@ -1,24 +1,8 @@
 const router = require('express').Router();
+const { getAllPost, getPost } = require('../controllers/post');
 
-router.get('/', (req, res) => {
-    res.json({
-        id: 1234,
-        title: "First post",
-        description: "Nothing like anything"
-    })
-})
 
-router.get('/all', (req, res) => {
-    res.json(
-        [
-            {
-                title: "1st Post"
-            },
-            {
-                title: "2nd Post"
-            }
-        ]
-    )
-})
+router.get('/', getPost)
+router.get('/all', getAllPost)
 
 module.exports = router;

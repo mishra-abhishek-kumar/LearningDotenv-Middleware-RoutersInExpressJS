@@ -10,7 +10,7 @@ const app = express();
 
 //Using mainRouter to access every other endpoints
 //This will help to not cluster our this main index file, we are seperating our endpoints in deiffernet area
-app.use('/api', mainRouter);
+app.use('/', mainRouter);
 
 
 app.get('/', (req, res) => {
