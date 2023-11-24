@@ -1,12 +1,18 @@
-const users = [
-    {
-        id: 1234,
-        email: "random1@gmail.com",
-        password: 1234
+const mongoose = require('mongoose');
+
+const userSchema = mongoose.Schema({
+    email: {
+        type: String,
+        required: true
     },
-    {
-        id: 4321,
-        email: "random2@gmail.com",
-        password: 4321
+    password: {
+        type: String,
+        required: true
+    },
+    marks: {
+        type: Number,
+        default: 0
     }
-]
+}, {timestamps: true});
+
+module.exports = mongoose.model("user", userSchema);
